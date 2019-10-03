@@ -33,11 +33,6 @@ Write-Host "Updating module manifest to version: $env:APPVEYOR_BUILD_VERSION"
 # Publish to PS Gallery           #
 #---------------------------------#
 
-if ( ($env:APPVEYOR_REPO_NAME -notmatch 'chocolatey') -or (!$env:APPVEYOR_REPO_TAG_NAME) )
-{
-    Write-Host "Finished testing of branch: $env:APPVEYOR_REPO_BRANCH - Exiting"
-    exit;
-}
 
 Write-Host "Publishing module to Powershell Gallery: "
 Publish-Module -Name $env:ModuleName -NuGetApiKey $env:nugetKey
